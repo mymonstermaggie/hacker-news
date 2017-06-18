@@ -1,18 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
+import TopTen from './TopTen.js'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: [],
+    }
+  };
+
+  componentWillMount() {
+    axios.get('https://newsapi.org/v1/articles?source=hacker-news&sortBy=latest&apiKey=71cae6de14c445ca9594ad4a393ace10')
+      .then((res) => {
+        console.log(res.data.articles)
+        this.setState({results: res.data.articles});
+      })
+      .catch(err => {
+        console.log(err);
+      }
+    );
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Hacker News</h2>
+          <h4>Latest Headlines</h4>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <TopTen res={this.state.results}/>
       </div>
     );
   }

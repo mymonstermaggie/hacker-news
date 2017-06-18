@@ -1,0 +1,19 @@
+.top {
+  font-family: sans-serif;
+  padding: 50px;
+  background-color: #2D2E2D;
+}
+
+.article {
+  max-width: 400px;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid #858487;
+  color: #858487;
+}
+
+a {
+  font-size: 20px;
+  color: #2DD42D;
+  text-decoration: none;
+}
