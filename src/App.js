@@ -21,6 +21,15 @@ class App extends Component {
         console.log(err);
       }
     );
+    axios.post('https://posttestserver.com/post.php', 'hello there, this is Maggie')
+      .then(res => {
+        console.log(res);
+        this.setState({apiResult: res.data})
+      })
+      .catch(err => {
+        console.log(err);
+      }
+    );
   }
 
   render() {
@@ -31,6 +40,7 @@ class App extends Component {
           <h4>Latest Headlines</h4>
         </div>
         <TopTen res={this.state.results}/>
+        <p>{this.state.apiResult}</p>
       </div>
     );
   }
